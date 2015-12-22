@@ -46,7 +46,7 @@ class WPSEO_Options {
 
 		foreach ( self::$options as $option_name => $option_class ) {
 
-			// If we have initialized the option, don't do it again
+			// If we have initialized the option, don't do it again.
 			if ( ! ( self::$option_instances[ $option_name ] instanceof $option_class ) ) {
 				$instance = new $option_class();
 
@@ -57,7 +57,8 @@ class WPSEO_Options {
 				 */
 				if ( ! $instance->multisite_only || $is_multisite ) {
 					self::$option_instances[ $option_name ] = $instance;
-				} else {
+				}
+				else {
 					unset( self::$options[ $option_name ] );
 				}
 			}
