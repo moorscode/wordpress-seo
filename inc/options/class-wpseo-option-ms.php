@@ -53,7 +53,7 @@ class WPSEO_Option_MS extends WPSEO_Option {
 	/**
 	 * Only run parent constructor in multisite context.
 	 *
-	 * @param string $option_name Name of this option
+	 * @param string $option_name The name of this option.
 	 */
 	public function __construct( $option_name ) {
 		if ( is_multisite() ) {

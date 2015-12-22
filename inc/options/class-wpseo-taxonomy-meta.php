@@ -98,7 +98,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * is updated early on and if so, change the call to schedule these for a later action on add/update
 	 * instead of running them straight away
 	 *
-	 * @param string $option_name Name of this option
+	 * @param string $option_name The name of this option.
 	 *
 	 * @return \WPSEO_Taxonomy_Meta
 	 */

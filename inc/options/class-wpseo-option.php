@@ -110,7 +110,7 @@ abstract class WPSEO_Option {
 	/**
 	 * Add all the actions and filters for the option
 	 *
-	 * @param string $option_name The name of this option
+	 * @param string $option_name The name of this option.
 	 *
 	 * @return \WPSEO_Option
 	 */

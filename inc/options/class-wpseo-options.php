@@ -134,7 +134,7 @@ class WPSEO_Options {
 	 *
 	 * Used in testing
 	 *
-	 * @param string $option_class The class for which you want to retrieve the option_name
+	 * @param string $option_class The class for which you want to retrieve the option_name.
 	 *
 	 * @return bool
 	 */
