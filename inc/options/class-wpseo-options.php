@@ -47,7 +47,7 @@ class WPSEO_Options {
 		foreach ( self::$options as $option_name => $option_class ) {
 
 			// If we have initialized the option, don't do it again.
-			if ( ! ( self::$option_instances[ $option_name ] instanceof $option_class ) ) {
+			if ( ! isset( self::$option_instances[ $option_name ] ) || ! ( self::$option_instances[ $option_name ] instanceof $option_class ) ) {
 				$instance = new $option_class();
 
 				/**
