@@ -48,7 +48,7 @@ class WPSEO_Options {
 
 			// If we have initialized the option, don't do it again.
 			if ( ! isset( self::$option_instances[ $option_name ] ) || ! ( self::$option_instances[ $option_name ] instanceof $option_class ) ) {
-				$instance = new $option_class();
+				$instance = new $option_class( $option_name );
 
 				/**
 				 * If not on multisite

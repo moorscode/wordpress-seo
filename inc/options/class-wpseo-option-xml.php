@@ -9,11 +9,6 @@
 class WPSEO_Option_XML extends WPSEO_Option {
 
 	/**
-	 * @var  string  option name
-	 */
-	public $option_name = 'wpseo_xml';
-
-	/**
 	 * @var  string  option group name for use in settings forms
 	 */
 	public $group_name = 'yoast_wpseo_xml_sitemap_options';
@@ -54,10 +49,12 @@ class WPSEO_Option_XML extends WPSEO_Option {
 	 *       is updated early on and if so, change the call to schedule these for a later action on add/update
 	 *       instead of running them straight away
 	 *
+	 * @param string $option_name Name of this option
+	 *
 	 * @return \WPSEO_Option_XML
 	 */
-	public function __construct() {
-		parent::__construct();
+	public function __construct( $option_name ) {
+		parent::__construct( $option_name );
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_rewrites' ) );
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_sitemap_cache' ) );
 	}

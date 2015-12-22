@@ -12,11 +12,6 @@
 class WPSEO_Option_MS extends WPSEO_Option {
 
 	/**
-	 * @var  string  option name
-	 */
-	public $option_name = 'wpseo_ms';
-
-	/**
 	 * @var  string  option group name for use in settings forms
 	 */
 	public $group_name = 'yoast_wpseo_multisite_options';
@@ -57,10 +52,12 @@ class WPSEO_Option_MS extends WPSEO_Option {
 
 	/**
 	 * Only run parent constructor in multisite context.
+	 *
+	 * @param string $option_name Name of this option
 	 */
-	public function __construct() {
+	public function __construct( $option_name ) {
 		if ( is_multisite() ) {
-			parent::__construct();
+			parent::__construct( $option_name );
 		}
 	}
 

@@ -9,11 +9,6 @@
 class WPSEO_Option_InternalLinks extends WPSEO_Option {
 
 	/**
-	 * @var  string  option name
-	 */
-	public $option_name = 'wpseo_internallinks';
-
-	/**
 	 * @var  array  Array of defaults for the option
 	 *        Shouldn't be requested directly, use $this->get_defaults();
 	 * @internal  Note: Some of the default values are added via the translate_defaults() method

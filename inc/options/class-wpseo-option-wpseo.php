@@ -9,11 +9,6 @@
 class WPSEO_Option_Wpseo extends WPSEO_Option {
 
 	/**
-	 * @var  string  option name
-	 */
-	public $option_name = 'wpseo';
-
-	/**
 	 * @var  array  Array of defaults for the option
 	 *        Shouldn't be requested directly, use $this->get_defaults();
 	 */
@@ -79,9 +74,11 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 	 * is updated early on and if so, change the call to schedule these for a later action on add/update
 	 * instead of running them straight away
 	 *
+	 * @param string $option_name Name of this option
+	 *
 	 * @return \WPSEO_Option_Wpseo
 	 */
-	public function __construct() {
+	public function __construct( $option_name ) {
 		/*
 		Dirty fix for making certain defaults available during activation while still only
 			   defining them once
@@ -90,7 +87,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 			$this->defaults[ $key ] = $value;
 		}
 
-		parent::__construct();
+		parent::__construct( $option_name );
 
 		/* Clear the cache on update/add */
 		add_action( 'add_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_cache' ) );

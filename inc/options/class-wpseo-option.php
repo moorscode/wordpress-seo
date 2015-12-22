@@ -60,7 +60,7 @@ abstract class WPSEO_Option {
 	/**
 	 * @var  string  Option name - MUST be set in concrete class and set to public.
 	 */
-	protected $option_name;
+	public $option_name;
 
 	/**
 	 * @var  string  Option group name for use in settings forms
@@ -110,9 +110,13 @@ abstract class WPSEO_Option {
 	/**
 	 * Add all the actions and filters for the option
 	 *
+	 * @param string $option_name The name of this option
+	 *
 	 * @return \WPSEO_Option
 	 */
-	public function __construct() {
+	public function __construct( $option_name ) {
+
+		$this->option_name = $option_name;
 
 		/* Add filters which get applied to the get_options() results */
 		$this->add_default_filters(); // Return defaults if option not set.

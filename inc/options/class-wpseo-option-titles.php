@@ -9,11 +9,6 @@
 class WPSEO_Option_Titles extends WPSEO_Option {
 
 	/**
-	 * @var  string  option name
-	 */
-	public $option_name = 'wpseo_titles';
-
-	/**
 	 * @var  array  Array of defaults for the option
 	 *        Shouldn't be requested directly, use $this->get_defaults();
 	 * @internal  Note: Some of the default values are added via the translate_defaults() method
@@ -118,10 +113,13 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 * is updated early on and if so, change the call to schedule these for a later action on add/update
 	 * instead of running them straight away
 	 *
+	 * @param string $option_name Name of this option
+	 *
 	 * @return \WPSEO_Option_Titles
 	 */
-	public function __construct() {
-		parent::__construct();
+	public function __construct( $option_name ) {
+		parent::__construct( $option_name );
+
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_cache' ) );
 		add_action( 'init', array( $this, 'end_of_init' ), 999 );
 	}
