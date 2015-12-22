@@ -775,17 +775,21 @@ class WPSEO_Utils {
 	public static function get_title_separator() {
 		$replacement = WPSEO_Options::get_default( 'wpseo_titles', 'separator' );
 
-		// Get the titles option and the separator options.
-		$titles_options = get_option( 'wpseo_titles' );
+		$wpseo_title_option = WPSEO_Options::get_option_name_by_class( 'WPSEO_Option_Titles' );
+		if ( ! empty( $wpseo_title_option ) ) {
 
-		$wpseo_titles = WPSEO_Options::get_option_instance( 'wpseo_titles' );
-		if ( $wpseo_titles instanceof WPSEO_Option_Titles ) {
-			$seperator_options = $wpseo_titles->get_separator_options();
+			// Get the titles option and the separator options.
+			$titles_options = get_option( $wpseo_title_option );
 
-			// This should always be set, but just to be sure.
-			if ( isset( $seperator_options[ $titles_options['separator'] ] ) ) {
-				// Set the new replacement.
-				$replacement = $seperator_options[ $titles_options['separator'] ];
+			$wpseo_titles = WPSEO_Options::get_option_instance( $wpseo_title_option );
+			if ( $wpseo_titles instanceof WPSEO_Option_Titles ) {
+				$seperator_options = $wpseo_titles->get_separator_options();
+
+				// This should always be set, but just to be sure.
+				if ( isset( $seperator_options[ $titles_options['separator'] ] ) ) {
+					// Set the new replacement.
+					$replacement = $seperator_options[ $titles_options['separator'] ];
+				}
 			}
 		}
 
