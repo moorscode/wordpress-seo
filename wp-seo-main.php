@@ -133,7 +133,7 @@ function _wpseo_activate() {
 	require_once( WPSEO_PATH . 'inc/wpseo-functions.php' );
 
 	wpseo_load_textdomain(); // Make sure we have our translations available for the defaults.
-	WPSEO_Options::get_instance();
+
 	if ( ! is_multisite() ) {
 		WPSEO_Options::initialize();
 	}
@@ -229,7 +229,7 @@ function wpseo_init() {
 	require_once( WPSEO_PATH . 'inc/wpseo-functions.php' );
 
 	// Make sure our option and meta value validation routines and default values are always registered and available.
-	WPSEO_Options::get_instance();
+	WPSEO_Options::load_option_implementations();
 	WPSEO_Meta::init();
 
 	$options = WPSEO_Options::get_all();

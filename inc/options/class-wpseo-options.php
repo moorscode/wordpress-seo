@@ -30,18 +30,12 @@ class WPSEO_Options {
 	/**
 	 * @var  array   Array of instantiated option objects
 	 */
-	protected static $option_instances = array();
+	private static $option_instances = array();
 
 	/**
-	 * @var  object  Instance of this class
+	 * Load concretions for option classes
 	 */
-	protected static $instance;
-
-
-	/**
-	 * Instantiate all the WPSEO option management classes
-	 */
-	public function __construct() {
+	public static function load_option_implementations() {
 		$is_multisite = is_multisite();
 
 		foreach ( self::$options as $option_name => $option_class ) {
@@ -63,19 +57,6 @@ class WPSEO_Options {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Get the singleton instance of this class
-	 *
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! ( self::$instance instanceof self ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
 	}
 
 	/**
@@ -157,7 +138,7 @@ class WPSEO_Options {
 	 *
 	 * @return bool
 	 */
-	public static function get_option_by_class( $option_class ) {
+	public static function get_option_name_by_class( $option_class ) {
 		return array_search( $option_class, self::$options );
 	}
 
@@ -284,6 +265,10 @@ class WPSEO_Options {
 	 * @return void
 	 */
 	public static function initialize() {
+		if ( empty( self::$option_instances ) ) {
+			self::load_option_implementations();
+		}
+
 		/*
 		Make sure title_test and description_test function are available even when called
 			   from the isolated activation
