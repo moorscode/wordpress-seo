@@ -56,25 +56,12 @@ class WPSEO_Option_XML extends WPSEO_Option {
 	 *
 	 * @return \WPSEO_Option_XML
 	 */
-	protected function __construct() {
+	public function __construct() {
 		parent::__construct();
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_rewrites' ) );
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_sitemap_cache' ) );
 	}
 
-
-	/**
-	 * Get the singleton instance of this class
-	 *
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! ( self::$instance instanceof self ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
 
 	/**
 	 * Add dynamically created default options based on available post types and taxonomies

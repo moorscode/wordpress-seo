@@ -81,7 +81,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 	 *
 	 * @return \WPSEO_Option_Wpseo
 	 */
-	protected function __construct() {
+	public function __construct() {
 		/*
 		Dirty fix for making certain defaults available during activation while still only
 			   defining them once
@@ -97,19 +97,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_cache' ) );
 	}
 
-
-	/**
-	 * Get the singleton instance of this class
-	 *
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! ( self::$instance instanceof self ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
 
 	/**
 	 * Validate the option

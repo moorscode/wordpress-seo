@@ -30,7 +30,7 @@ class WPSEO_Options {
 	/**
 	 * @var  array   Array of instantiated option objects
 	 */
-	protected static $option_instances;
+	protected static $option_instances = array();
 
 	/**
 	 * @var  object  Instance of this class
@@ -41,17 +41,24 @@ class WPSEO_Options {
 	/**
 	 * Instantiate all the WPSEO option management classes
 	 */
-	protected function __construct() {
+	public function __construct() {
 		$is_multisite = is_multisite();
 
 		foreach ( self::$options as $option_name => $option_class ) {
-			$instance = call_user_func( array( $option_class, 'get_instance' ) );
 
-			if ( ! $instance->multisite_only || $is_multisite ) {
-				self::$option_instances[ $option_name ] = $instance;
-			}
-			else {
-				unset( self::$options[ $option_name ] );
+			if ( ! ( self::$option_instances[ $option_name ] instanceof $option_class ) ) {
+				$instance = new $option_class();
+
+				/**
+				 * If not on multisite
+				 * -or-
+				 * If on multisite and option is multisite-only
+				 */
+				if ( ! $instance->multisite_only || $is_multisite ) {
+					self::$option_instances[ $option_name ] = $instance;
+				} else {
+					unset( self::$options[ $option_name ] );
+				}
 			}
 		}
 	}

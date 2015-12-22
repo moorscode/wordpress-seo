@@ -100,7 +100,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 *
 	 * @return \WPSEO_Taxonomy_Meta
 	 */
-	protected function __construct() {
+	public function __construct() {
 		parent::__construct();
 
 		self::$name = $this->option_name;
@@ -108,21 +108,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		/* On succesfull update/add of the option, flush the W3TC cache */
 		add_action( 'add_option_' . $this->option_name, array( 'WPSEO_Utils', 'flush_w3tc_cache' ) );
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'flush_w3tc_cache' ) );
-	}
-
-
-	/**
-	 * Get the singleton instance of this class
-	 *
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! ( self::$instance instanceof self ) ) {
-			self::$instance = new self();
-			self::$name     = self::$instance->option_name;
-		}
-
-		return self::$instance;
 	}
 
 

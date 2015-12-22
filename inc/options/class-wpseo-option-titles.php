@@ -120,7 +120,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 *
 	 * @return \WPSEO_Option_Titles
 	 */
-	protected function __construct() {
+	public function __construct() {
 		parent::__construct();
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_cache' ) );
 		add_action( 'init', array( $this, 'end_of_init' ), 999 );
@@ -134,19 +134,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		do_action( 'wpseo_double_clean_titles' );
 	}
 
-
-	/**
-	 * Get the singleton instance of this class
-	 *
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! ( self::$instance instanceof self ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
 
 	/**
 	 * Get the available separator options

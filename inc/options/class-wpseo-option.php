@@ -112,7 +112,7 @@ abstract class WPSEO_Option {
 	 *
 	 * @return \WPSEO_Option
 	 */
-	protected function __construct() {
+	public function __construct() {
 
 		/* Add filters which get applied to the get_options() results */
 		$this->add_default_filters(); // Return defaults if option not set.
@@ -181,13 +181,6 @@ abstract class WPSEO_Option {
 	}
 
 // @codingStandardsIgnoreStart
-
-	/**
-	 * All concrete classes *must* contain the get_instance method
-	 * @internal Unfortunately I can't define it as an abstract as it also *has* to be static....
-	 */
-	// abstract protected static function get_instance();
-
 
 	/**
 	 * Concrete classes *may* contain a translate_defaults method

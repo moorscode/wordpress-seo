@@ -78,20 +78,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 
 
 	/**
-	 * Get the singleton instance of this class
-	 *
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! ( self::$instance instanceof self ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
-
-
-	/**
 	 * Translate/set strings used in the option defaults
 	 *
 	 * @return void
