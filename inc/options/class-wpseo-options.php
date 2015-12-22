@@ -149,6 +149,25 @@ class WPSEO_Options {
 
 
 	/**
+	 * Get the option_name for a specific class
+	 *
+	 * Used in testing
+	 *
+	 * @param string $option_class The class for which you want to retrieve the option_name
+	 *
+	 * @return bool
+	 */
+	public static function get_option_by_class( $option_class ) {
+		$index = array_search( $option_class, self::$options );
+		if ( false === $index ) {
+			return false;
+		}
+
+		return $option_class[ $index ];
+	}
+
+
+	/**
 	 * Retrieve an array of the options which should be included in get_all() and reset().
 	 *
 	 * @static
