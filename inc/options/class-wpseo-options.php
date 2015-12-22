@@ -158,12 +158,7 @@ class WPSEO_Options {
 	 * @return bool
 	 */
 	public static function get_option_by_class( $option_class ) {
-		$index = array_search( $option_class, self::$options );
-		if ( false === $index ) {
-			return false;
-		}
-
-		return self::$options[ $index ];
+		return array_search( $option_class, self::$options );
 	}
 
 
