@@ -780,7 +780,7 @@ class WPSEO_Utils {
 
 		$wpseo_titles = WPSEO_Options::get_option_instance( 'wpseo_titles' );
 		if ( $wpseo_titles instanceof WPSEO_Option_Titles ) {
-			$seperator_options = $wpseo_titles->get_seperator_options();
+			$seperator_options = $wpseo_titles->get_separator_options();
 
 			// This should always be set, but just to be sure.
 			if ( isset( $seperator_options[ $titles_options['separator'] ] ) ) {
