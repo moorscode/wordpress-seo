@@ -163,7 +163,7 @@ class WPSEO_Options {
 			return false;
 		}
 
-		return $option_class[ $index ];
+		return self::$options[ $index ];
 	}
 
 
